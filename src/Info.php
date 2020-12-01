@@ -10,10 +10,13 @@ namespace Leadvertex\Plugin\Components\Info;
 
 use InvalidArgumentException;
 use JsonSerializable;
+use Leadvertex\Plugin\Components\Translations\Translator;
 use RuntimeException;
 
-final class Info
+final class Info implements JsonSerializable
 {
+
+    private PluginType $type;
 
     /** @var string|callable */
     private $name;
@@ -21,7 +24,7 @@ final class Info
     /** @var string|callable */
     private $description;
 
-    /** @var array|mixed */
+    /** @var array|JsonSerializable */
     private $extra;
 
     private Developer $developer;
@@ -30,9 +33,24 @@ final class Info
 
     private function __construct() {}
 
-    public static function config($name, $description, $extra, Developer $developer): void
+    /**
+     * @param string|callable $name
+     * @param string|callable $description
+     * @param PluginType $type
+     * @param array|JsonSerializable $extra
+     * @param Developer $developer
+     */
+    public static function config(
+        PluginType $type,
+        $name,
+        $description,
+        $extra,
+        Developer $developer
+    ): void
     {
         $instance = new self();
+
+        $instance->type = $type;
 
         self::guardEmpty($name, 'name');
         $instance->name = is_string($name) ? trim($name) : $name;
@@ -50,6 +68,11 @@ final class Info
         self::$instance = $instance;
     }
 
+    public function getType(): PluginType
+    {
+        return $this->type;
+    }
+
     public function getName(): string
     {
         $value = is_callable($this->name) ? trim(($this->name)()) : $this->name;
@@ -65,7 +88,7 @@ final class Info
     }
 
     /**
-     * @return array|mixed
+     * @return array|JsonSerializable|mixed
      */
     public function getExtra()
     {
@@ -101,4 +124,19 @@ final class Info
         }
     }
 
+    public function jsonSerialize()
+    {
+        return [
+            'name' => $this->getName(),
+            'description' => $this->getDescription(),
+            'type' => (string) $this->getType(),
+            'extra' => $this->getExtra(),
+            'languages' => [
+                'current' => Translator::getLang(),
+                'default' => Translator::getDefaultLang(),
+                'available' => Translator::getLanguages(),
+            ],
+            'developer' => $this->getDeveloper(),
+        ];
+    }
 }
