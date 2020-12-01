@@ -1,0 +1,30 @@
+{
+  "name": "leadvertex/plugin-component-info",
+  "description": "LeadVertex plugin information component",
+  "type": "library",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Timur Kasumov aka XAKEPEHOK",
+      "email": "support@leadvertex.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Leadvertex\\Plugin\\Components\\Info\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.4",
+    "ext-json": "*"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Leadvertex\\Plugin\\Components\\Info\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  }
+}
