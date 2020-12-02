@@ -8,11 +8,7 @@ composer require leadvertex/plugin-component-info
 
 Configuration
 ```php
-$developer = new \Leadvertex\Plugin\Components\Info\Developer(
-    'Tony Stark', 
-    'support@starkindustries.com', 
-    'starkindustries.com'
-);
+$type = new \Leadvertex\Plugin\Components\Info\PluginType(PluginType::MACROS);
 
 //PluginPurpose shown only for example 
 //@see https://github.com/leadvertex/plugin-component-purpose
@@ -21,7 +17,14 @@ $purpose = new PluginPurpose(
     new PluginEntity(PluginEntity ::ENTITY_ORDER),
 );
 
+$developer = new \Leadvertex\Plugin\Components\Info\Developer(
+    'Tony Stark', 
+    'support@starkindustries.com', 
+    'starkindustries.com'
+);
+
 $info = \Leadvertex\Plugin\Components\Info\Info::config(
+    $type,
     'Excel',
     'This plugin can be used for export your orders to Excel',
     $purpose,
@@ -30,6 +33,7 @@ $info = \Leadvertex\Plugin\Components\Info\Info::config(
 
 //Info name and description also can be a callable
 $info = \Leadvertex\Plugin\Components\Info\Info::config(
+    $type,
     fn() => 'Excel',
     fn() => 'This plugin can be used for export your orders to Excel',
     $purpose,
@@ -44,4 +48,6 @@ echo Info::getInstance()->getDescription();    //print "This plugin can be used 
 
 $extra = Info::getInstance()->getExtra();
 $developer = Info::getInstance()->getDeveloper();
+
+echo json_encode(Info::getInstance());         //can be serialized into JSON
 ```
