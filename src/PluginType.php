@@ -17,6 +17,7 @@ final class PluginType extends EnumHelper
 
     const MACROS = 'MACROS';
     const LOGISTIC = 'LOGISTIC';
+    const PBX = 'PBX';
 
     public function __construct(string $type)
     {
@@ -29,6 +30,7 @@ final class PluginType extends EnumHelper
         return [
             self::MACROS,
             self::LOGISTIC,
+            self::PBX,
         ];
     }
 
