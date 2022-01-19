@@ -19,6 +19,7 @@ final class PluginType extends EnumHelper
     const LOGISTIC = 'LOGISTIC';
     const PBX = 'PBX';
     const CHAT = 'CHAT';
+    const GEOCODER = 'GEOCODER';
 
     public function __construct(string $type)
     {
@@ -33,6 +34,7 @@ final class PluginType extends EnumHelper
             self::LOGISTIC,
             self::PBX,
             self::CHAT,
+            self::GEOCODER,
         ];
     }
 
