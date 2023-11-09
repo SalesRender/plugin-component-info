@@ -5,13 +5,13 @@
  * @author Timur Kasumov (XAKEPEHOK)
  */
 
-namespace Leadvertex\Plugin\Components\Info;
+namespace SalesRender\Plugin\Components\Info;
 
 
 use InvalidArgumentException;
 use JsonSerializable;
-use Leadvertex\Plugin\Components\Translations\Translator;
 use RuntimeException;
+use SalesRender\Plugin\Components\Translations\Translator;
 
 final class Info implements JsonSerializable
 {

@@ -5,11 +5,11 @@
  * @author Timur Kasumov (XAKEPEHOK)
  */
 
-namespace Leadvertex\Plugin\Components\Info;
+namespace SalesRender\Plugin\Components\Info;
 
 use InvalidArgumentException;
-use Leadvertex\Plugin\Components\Translations\Translator;
 use PHPUnit\Framework\TestCase;
+use SalesRender\Plugin\Components\Translations\Translator;
 
 class InfoTest extends TestCase
 {

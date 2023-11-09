@@ -5,7 +5,7 @@
  * @author Timur Kasumov aka XAKEPEHOK
  */
 
-namespace Leadvertex\Plugin\Components\Info;
+namespace SalesRender\Plugin\Components\Info;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

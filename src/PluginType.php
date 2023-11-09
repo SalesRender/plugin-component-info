@@ -5,7 +5,7 @@
  * @author Timur Kasumov (XAKEPEHOK)
  */
 
-namespace Leadvertex\Plugin\Components\Info;
+namespace SalesRender\Plugin\Components\Info;
 
 
 use XAKEPEHOK\EnumHelper\EnumHelper;
