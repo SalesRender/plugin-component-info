@@ -1,29 +1,29 @@
-- `\Leadvertex\Plugin\Components\Info\Info` - component for represent information about plugin developer
-- `\Leadvertex\Plugin\Components\Info\Developer` - component for represent information about plugin itself
+- `\SalesRender\Plugin\Components\Info\Info` - component for represent information about plugin developer
+- `\SalesRender\Plugin\Components\Info\Developer` - component for represent information about plugin itself
 
 Installation
 ```shell script
-composer require leadvertex/plugin-component-info
+composer require salesrender/plugin-component-info
 ```
 
 Configuration
 ```php
-$type = new \Leadvertex\Plugin\Components\Info\PluginType(PluginType::MACROS);
+$type = new \SalesRender\Plugin\Components\Info\PluginType(PluginType::MACROS);
 
 //PluginPurpose shown only for example 
-//@see https://github.com/leadvertex/plugin-component-purpose
+//@see https://github.com/salesrender/plugin-component-purpose
 $purpose = new PluginPurpose(
     new PluginClass(PluginClass::CLASS_EXPORTER),
     new PluginEntity(PluginEntity ::ENTITY_ORDER),
 );
 
-$developer = new \Leadvertex\Plugin\Components\Info\Developer(
+$developer = new \SalesRender\Plugin\Components\Info\Developer(
     'Tony Stark', 
     'support@starkindustries.com', 
     'starkindustries.com'
 );
 
-$info = \Leadvertex\Plugin\Components\Info\Info::config(
+$info = \SalesRender\Plugin\Components\Info\Info::config(
     $type,
     'Excel',
     'This plugin can be used for export your orders to Excel',
@@ -32,7 +32,7 @@ $info = \Leadvertex\Plugin\Components\Info\Info::config(
 );
 
 //Info name and description also can be a callable
-$info = \Leadvertex\Plugin\Components\Info\Info::config(
+$info = \SalesRender\Plugin\Components\Info\Info::config(
     $type,
     fn() => 'Excel',
     fn() => 'This plugin can be used for export your orders to Excel',

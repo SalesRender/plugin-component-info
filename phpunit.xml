@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Leadvertex plugin info component test">
+        <testsuite name="SalesRender plugin info component test">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
