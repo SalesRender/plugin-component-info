@@ -13,8 +13,7 @@
   "require": {
     "php": ">=7.4",
     "ext-json": "*",
-    "xakepehok/enum-helper": "^0.1.0",
-    "salesrender/plugin-component-translations": "^0.1.2"
+    "xakepehok/enum-helper": "^0.1.0"
   },
   "autoload": {
     "psr-4": {
@@ -22,7 +21,8 @@
     }
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.0"
+    "phpunit/phpunit": "^9.0",
+    "salesrender/plugin-component-translations": "^0.1.2"
   },
   "autoload-dev": {
     "psr-4": {
