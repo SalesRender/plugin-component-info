@@ -24,28 +24,22 @@ final class Info implements JsonSerializable
     /** @var string|callable */
     private $description;
 
-    /** @var array|JsonSerializable */
-    private $extra;
+    private JsonSerializable|array $extra;
 
     private Developer $developer;
 
     private static self $instance;
 
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
-    /**
-     * @param string|callable $name
-     * @param string|callable $description
-     * @param PluginType $type
-     * @param array|JsonSerializable $extra
-     * @param Developer $developer
-     */
     public static function config(
-        PluginType $type,
-        $name,
-        $description,
-        $extra,
-        Developer $developer
+        PluginType             $type,
+        string|callable        $name,
+        string|callable        $description,
+        array|JsonSerializable $extra,
+        Developer              $developer
     ): void
     {
         $instance = new self();
@@ -58,9 +52,6 @@ final class Info implements JsonSerializable
         self::guardEmpty($description, 'description');
         $instance->description = is_string($description) ? trim($description) : $description;
 
-        if (!is_array($extra) && !($extra instanceof JsonSerializable)) {
-            throw new InvalidArgumentException("Argument 'extra' in " . self::class . " should be array or JsonSerializable", 2);
-        }
         $instance->extra = $extra;
 
         $instance->developer = $developer;
@@ -87,10 +78,7 @@ final class Info implements JsonSerializable
         return $value;
     }
 
-    /**
-     * @return array|JsonSerializable|mixed
-     */
-    public function getExtra()
+    public function getExtra(): JsonSerializable|array
     {
         return $this->extra;
     }
@@ -108,7 +96,7 @@ final class Info implements JsonSerializable
         return self::$instance;
     }
 
-    private static function guardEmpty($value, string $argument): void
+    private static function guardEmpty(mixed $value, string $argument): void
     {
         if (is_callable($value)) {
             return;
@@ -124,12 +112,12 @@ final class Info implements JsonSerializable
         }
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'name' => $this->getName(),
             'description' => $this->getDescription(),
-            'type' => (string) $this->getType(),
+            'type' => (string)$this->getType(),
             'extra' => $this->getExtra(),
             'languages' => [
                 'current' => Translator::getLang(),

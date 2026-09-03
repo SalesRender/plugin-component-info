@@ -10,6 +10,7 @@ namespace SalesRender\Plugin\Components\Info;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use SalesRender\Plugin\Components\Translations\Translator;
+use TypeError;
 
 class InfoTest extends TestCase
 {
@@ -39,7 +40,7 @@ class InfoTest extends TestCase
 
     public function testConfigInvalidExtra(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(TypeError::class);
         Info::config($this->type, 'name', '', '', $this->developer);
     }
 

@@ -15,13 +15,13 @@ final class PluginType extends EnumHelper
 
     private string $type;
 
-    const MACROS = 'MACROS';
-    const LOGISTIC = 'LOGISTIC';
-    const PBX = 'PBX';
-    const CHAT = 'CHAT';
-    const GEOCODER = 'GEOCODER';
-    const INTEGRATION = 'INTEGRATION';
-    const RESALE = 'RESALE';
+    const string MACROS = 'MACROS';
+    const string LOGISTIC = 'LOGISTIC';
+    const string PBX = 'PBX';
+    const string CHAT = 'CHAT';
+    const string GEOCODER = 'GEOCODER';
+    const string INTEGRATION = 'INTEGRATION';
+    const string RESALE = 'RESALE';
 
     public function __construct(string $type)
     {

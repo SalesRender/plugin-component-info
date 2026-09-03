@@ -26,12 +26,12 @@ final class Developer implements JsonSerializable
      * @param string $email of support for this plugin
      * @param string|null $hostname hostname of company or developer
      */
-    public function __construct(string $name, string $email, string $hostname = null)
+    public function __construct(string $name, string $email, ?string $hostname = null)
     {
         $this->name = trim($name);
         $this->email = strtolower(trim($email));
 
-        $hostname = trim(strtolower($hostname));
+        $hostname = trim(strtolower($hostname ?? ''));
         if (!preg_match('~^[^.][a-z\d\-.]+[^.]$~u', $hostname)) {
             throw new InvalidArgumentException('Hostname should not contain http(s)://, or slashes. For example, it can be "example.com"');
         }
@@ -54,7 +54,7 @@ final class Developer implements JsonSerializable
         return $this->hostname;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'name' => $this->name,
